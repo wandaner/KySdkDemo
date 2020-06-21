@@ -5,7 +5,9 @@ buildscript {
     repositories {
         google()
         jcenter()
-        maven { url 'https://dl.bintray.com/situzhuren/kyou'}
+        maven {
+            url  "https://dl.bintray.com/situzhuren/kyou"
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.1'
@@ -20,7 +22,9 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        maven {
+            url  "https://dl.bintray.com/situzhuren/kyou"
+        }
     }
 }
 
