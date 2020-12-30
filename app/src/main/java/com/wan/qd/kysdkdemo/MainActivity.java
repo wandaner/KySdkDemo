@@ -68,6 +68,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     }
 
+    /**
+     * 初始化 设置回调
+     */
     private void initData() {
         QCSDKManager.getInstance().setParams("1001", "b8c37e33defde51cf91e1e03e51657da", true);
         QCSDKManager.getInstance().init(MainActivity.this, new QCSdkCallback() {
@@ -112,15 +115,24 @@ public class MainActivity extends Activity implements View.OnClickListener {
         });
     }
 
+    /**
+     * 登录
+     */
     private void login() {
         loadingDialog.show();
         QCSDKManager.getInstance().login(activity);
     }
 
+    /**
+     * 登出
+     */
     private void logout() {
         QCSDKManager.getInstance().logout();
     }
 
+    /**
+     * 支付
+     */
     private void pay() {
         int money = 1;
         String price = ((TextView) findViewById(R.id.money)).getText()
@@ -138,7 +150,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         order.setGoodsDesc("太白的蒲扇，五金一件");                  // 物品描述
         order.setAmount(money);                                   // 商品价格（单位分）
         order.setOrderId(SystemClock.elapsedRealtime() + "");     // 订单号，请游戏服务器生成并记录，保持唯一性
-        order.setNotifyUrl("http://www.notifyUrl");               // 回调地址，支付成功后，订单号，金额及透传参数会通过此地址回调到游戏服务器
+        order.setNotifyUrl("http://xxx.x.xx.x.notifyUrl");               // 回调地址，支付成功后，订单号，金额及透传参数会通过此地址回调到游戏服务器
         order.setRoleId("r001");                                  // 角色id
         order.setRoleName("农夫三拳");                             // 角色名称
         order.setServerId("s001");                                // 服务器id
@@ -152,12 +164,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
             @Override
             public void success(int code, String order) {
-
+                // 支付成功
             }
 
             @Override
             public void failure(int code, String order, String msg) {
-
+                // 支付失败
             }
         });
     }
